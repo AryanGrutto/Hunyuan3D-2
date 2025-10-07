@@ -351,11 +351,11 @@ def shape_generation(
 
 
 def build_app():
-    title = 'Hunyuan3D-2: High Resolution Textured 3D Assets Generation'
+    title = 'Alpha3D-2: Textured 3D Assets Generation'
     if MV_MODE:
-        title = 'Hunyuan3D-2mv: Image to 3D Generation with 1-4 Views'
+        title = 'Alpha3D-2mv: Image to 3D Generation with 1-4 Views'
     if 'mini' in args.subfolder:
-        title = 'Hunyuan3D-2mini: Strong 0.6B Image to Shape Generator'
+        title = 'Alpha3D-2mini: Strong 0.6B Image to Shape Generator'
     if TURBO_MODE:
         title = title.replace(':', '-Turbo: Fast ')
 
@@ -365,14 +365,14 @@ def build_app():
     {title}
     </div>
     <div align="center">
-    Tencent Hunyuan3D Team
+    Alpha3D 2.0 by Alpha intelligence.
     </div>
     <div align="center">
-      <a href="https://github.com/tencent/Hunyuan3D-2">Github</a> &ensp; 
-      <a href="http://3d-models.hunyuan.tencent.com">Homepage</a> &ensp;
-      <a href="https://3d.hunyuan.tencent.com">Hunyuan3D Studio</a> &ensp;
+      <a href="https://github.com/tencent/Alpha3D-2">Github</a> &ensp; 
+      <a href="http://3d-models.alpha3d.tencent.com">Homepage</a> &ensp;
+      <a href="https://3d.alpha3d.tencent.com">Alpha3D Studio</a> &ensp;
       <a href="#">Technical Report</a> &ensp;
-      <a href="https://huggingface.co/Tencent/Hunyuan3D-2"> Pretrained Models</a> &ensp;
+      <a href="https://huggingface.co/Tencent/Alpha3D-2"> Pretrained Models</a> &ensp;
     </div>
     """
     custom_css = """
@@ -389,7 +389,7 @@ def build_app():
 
     """
 
-    with gr.Blocks(theme=gr.themes.Base(), title='Hunyuan-3D-2.0', analytics_enabled=False, css=custom_css) as demo:
+    with gr.Blocks(theme=gr.themes.Base(), title='Alpha3D-2', analytics_enabled=False, css=custom_css) as demo:
         gr.HTML(title_html)
 
         with gr.Row():
@@ -400,7 +400,7 @@ def build_app():
 
                     with gr.Tab('Text Prompt', id='tab_txt_prompt', visible=HAS_T2I and not MV_MODE) as tab_tp:
                         caption = gr.Textbox(label='Text Prompt',
-                                             placeholder='HunyuanDiT will be used to generate image.',
+                                             placeholder='Alpha will be used to generate image.',
                                              info='Example: A 3D model of a cute cat, white background')
                     with gr.Tab('MultiView Prompt', visible=MV_MODE) as tab_mv:
                         # gr.Label('Please upload at least one front image.')
@@ -499,15 +499,14 @@ def build_app():
 
         gr.HTML(f"""
         <div align="center">
-        Activated Model - Shape Generation ({args.model_path}/{args.subfolder}) ; Texture Generation ({'Hunyuan3D-2' if HAS_TEXTUREGEN else 'Unavailable'})
+        Activated Model - Shape Generation ({args.model_path}/{args.subfolder}) ; Texture Generation ({'Alpha3D-2' if HAS_TEXTUREGEN else 'Unavailable'})
         </div>
         """)
         if not HAS_TEXTUREGEN:
             gr.HTML("""
             <div style="margin-top: 5px;"  align="center">
                 <b>Warning: </b>
-                Texture synthesis is disable due to missing requirements,
-                 please install requirements following <a href="https://github.com/Tencent/Hunyuan3D-2?tab=readme-ov-file#install-requirements">README.md</a>to activate it.
+                Texture synthesis is disable due to missing requirements
             </div>
             """)
         if not args.enable_t23d:
@@ -672,7 +671,7 @@ if __name__ == '__main__':
     HTML_OUTPUT_PLACEHOLDER = f"""
     <div style='height: {650}px; width: 100%; border-radius: 8px; border-color: #e5e7eb; border-style: solid; border-width: 1px; display: flex; justify-content: center; align-items: center;'>
       <div style='text-align: center; font-size: 16px; color: #6b7280;'>
-        <p style="color: #8d8d8d;">Welcome to Hunyuan3D!</p>
+        <p style="color: #8d8d8d;">Welcome to Alpha3D by Alpha intelligence!</p>
         <p style="color: #8d8d8d;">No mesh here.</p>
       </div>
     </div>
