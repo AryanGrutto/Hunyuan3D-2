@@ -363,6 +363,18 @@ def build_app():
     <div style="font-size: 2em; font-weight: bold; text-align: center; margin-bottom: 5px">
 
     {title}
+    """
+    custom_css = """
+    .app.svelte-wpkpf6.svelte-wpkpf6:not(.fill_width) {
+        max-width: 1480px;
+    }
+    .mv-image button .wrap {
+        font-size: 10px;
+    }
+
+    .mv-image .icon-wrap {
+        width: 20px;
+    }
 
     """
 
