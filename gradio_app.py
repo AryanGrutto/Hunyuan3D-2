@@ -363,29 +363,6 @@ def build_app():
     <div style="font-size: 2em; font-weight: bold; text-align: center; margin-bottom: 5px">
 
     {title}
-    </div>
-    <div align="center">
-    Alpha3D 2.0 by Alpha intelligence.
-    </div>
-    <div align="center">
-      <a href="https://github.com/tencent/Alpha3D-2">Github</a> &ensp; 
-      <a href="http://3d-models.alpha3d.tencent.com">Homepage</a> &ensp;
-      <a href="https://3d.alpha3d.tencent.com">Alpha3D Studio</a> &ensp;
-      <a href="#">Technical Report</a> &ensp;
-      <a href="https://huggingface.co/Tencent/Alpha3D-2"> Pretrained Models</a> &ensp;
-    </div>
-    """
-    custom_css = """
-    .app.svelte-wpkpf6.svelte-wpkpf6:not(.fill_width) {
-        max-width: 1480px;
-    }
-    .mv-image button .wrap {
-        font-size: 10px;
-    }
-
-    .mv-image .icon-wrap {
-        width: 20px;
-    }
 
     """
 
@@ -497,25 +474,25 @@ def build_app():
                                         inputs=[mv_image_front, mv_image_back, mv_image_left, mv_image_right],
                                         label=None, examples_per_page=6)
 
-        gr.HTML(f"""
-        <div align="center">
-        Activated Model - Shape Generation ({args.model_path}/{args.subfolder}) ; Texture Generation ({'Alpha3D-2' if HAS_TEXTUREGEN else 'Unavailable'})
-        </div>
-        """)
-        if not HAS_TEXTUREGEN:
-            gr.HTML("""
-            <div style="margin-top: 5px;"  align="center">
-                <b>Warning: </b>
-                Texture synthesis is disable due to missing requirements
-            </div>
-            """)
-        if not args.enable_t23d:
-            gr.HTML("""
-            <div style="margin-top: 5px;"  align="center">
-                <b>Warning: </b>
-                Text to 3D is disable. To activate it, please run `python gradio_app.py --enable_t23d`.
-            </div>
-            """)
+        # gr.HTML(f"""
+        # <div align="center">
+        # Activated Model - Shape Generation ({args.model_path}/{args.subfolder}) ; Texture Generation ({'Alpha3D-2' if HAS_TEXTUREGEN else 'Unavailable'})
+        # </div>
+        # """)
+        # if not HAS_TEXTUREGEN:
+        #     # gr.HTML("""
+        #     # <div style="margin-top: 5px;"  align="center">
+        #     #     <b>Warning: </b>
+        #     #     Texture synthesis is disable due to missing requirements
+        #     # </div>
+        #     # """)
+        # if not args.enable_t23d:
+        #     gr.HTML("""
+        #     <div style="margin-top: 5px;"  align="center">
+        #         <b>Warning: </b>
+        #         Text to 3D is disable. To activate it, please run `python gradio_app.py --enable_t23d`.
+        #     </div>
+        #     """)
 
         tab_ip.select(fn=lambda: gr.update(selected='tab_img_gallery'), outputs=gallery)
         if HAS_T2I:
